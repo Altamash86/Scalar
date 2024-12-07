@@ -32,41 +32,41 @@ public class OrderOneWinningStartegy implements WinningStartegy{
         }
     }
 
-    public boolean isTopLeftDiagonalCell(int row, int col){
+    private boolean isTopLeftDiagonalCell(int row, int col){
         return row==col;
     }
 
-    public boolean isTopRightDiagonalCell(int row, int col){
+    private boolean isTopRightDiagonalCell(int row, int col){
         return (row+col)==(dimension-1);
     }
 
-    public boolean isCornerCell(int row, int col){
+    private boolean isCornerCell(int row, int col){
         if(row == 0 || row == dimension-1)
             return col==0 || col==dimension-1;
         return false;
     }
 
-    public boolean checkRowWin(int row, char symbol){
+    private boolean checkRowWin(int row, char symbol){
         rowHashMaps.get(row).put(symbol,rowHashMaps.get(row).getOrDefault(symbol,0)+1);
         return rowHashMaps.get(row).get(symbol)==dimension;
     }
 
-    public boolean checkColWin(int col, char symbol){
+    private boolean checkColWin(int col, char symbol){
         colHashMaps.get(col).put(symbol,colHashMaps.get(col).getOrDefault(symbol,0)+1);
         return colHashMaps.get(col).get(symbol)==dimension;
     }
 
-    public boolean checkTopLeftDiagonalWin(char symbol){
+    private boolean checkTopLeftDiagonalWin(char symbol){
         topLeftDiagonalHashMap.put(symbol,topLeftDiagonalHashMap.getOrDefault(symbol,0)+1);
         return topLeftDiagonalHashMap.get(symbol)==dimension;
     }
 
-    public boolean checkTopRightDiagonalWin(char symbol){
+    private boolean checkTopRightDiagonalWin(char symbol){
         topRightDiagonalHashMap.put(symbol,topRightDiagonalHashMap.getOrDefault(symbol,0)+1);
         return topRightDiagonalHashMap.get(symbol)==dimension;
     }
 
-    public boolean checkCornerWin(char symbol){
+    private boolean checkCornerWin(char symbol){
         cornerHashMap.put(symbol,cornerHashMap.getOrDefault(symbol,0)+1);
         return cornerHashMap.get(symbol)==dimension;
     }
