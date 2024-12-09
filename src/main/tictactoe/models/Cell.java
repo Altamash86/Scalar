@@ -14,10 +14,10 @@ public class Cell {
 
     public void display(){
         if(player == null){
-            System.out.println("| |");
+            System.out.print("| | ");
         }
         else{
-            System.out.print("| "+player.getSymbol()+" |");
+            System.out.print("|" + player.getSymbol() + "| ");
         }
     }
 
@@ -51,5 +51,12 @@ public class Cell {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public Cell clone(){
+        Cell cell = new Cell(this.row, this.col);
+        cell.player = this.player;
+        cell.cellState = this.cellState;
+        return cell;
     }
 }

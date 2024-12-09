@@ -4,9 +4,9 @@ import main.tictactoe.exception.DuplicateSymbolException;
 import main.tictactoe.exception.InvalidBoardSizeException;
 import main.tictactoe.exception.InvalidBotCountException;
 import main.tictactoe.exception.InvalidNumberOfPlayers;
+import main.tictactoe.service.winningstartegy.WinningStrategy;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class Game {
     private List<Move> moves;
     private List<Board> boardStates;
     private WinningStrategy winningStrategy;
+    private int noOfSymbols;
 
     public Game(Board currentBoard, List<Player> players, WinningStrategy winningStrategy) {
         this.currentBoard = currentBoard;
@@ -27,6 +28,79 @@ public class Game {
         this.moves = new ArrayList<>();
         this.boardStates = new ArrayList<>();
         this.winningStrategy = winningStrategy;
+        this.noOfSymbols = 0;
+    }
+
+    public Board getCurrentBoard() {
+        return currentBoard;
+    }
+
+    public void setCurrentBoard(Board currentBoard) {
+        this.currentBoard = currentBoard;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    public void setGameStatus(GameStatus gameStatus) {
+        this.gameStatus = gameStatus;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
+
+    public List<Move> getMoves() {
+        return moves;
+    }
+
+    public void setMoves(List<Move> moves) {
+        this.moves = moves;
+    }
+
+    public List<Board> getBoardStates() {
+        return boardStates;
+    }
+
+    public void setBoardStates(List<Board> boardStates) {
+        this.boardStates = boardStates;
+    }
+
+    public WinningStrategy getWinningStrategy() {
+        return winningStrategy;
+    }
+
+    public void setWinningStrategy(WinningStrategy winningStrategy) {
+        this.winningStrategy = winningStrategy;
+    }
+
+    public int getNoOfSymbols() {
+        return noOfSymbols;
+    }
+
+    public void setNoOfSymbols(int noOfSymbols) {
+        this.noOfSymbols = noOfSymbols;
     }
 
     public static Builder builder(){

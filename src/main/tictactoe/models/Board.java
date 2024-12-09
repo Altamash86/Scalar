@@ -19,6 +19,11 @@ public class Board {
         }
     }
 
+    public Board(Board board) {
+        this.size = board.size;
+        this.board = board.board;
+    }
+
     public void printBoard(){
         for(int i=0;i<size;i++){
             List<Cell> cells = board.get(i);
@@ -43,5 +48,15 @@ public class Board {
 
     public void setBoard(List<List<Cell>> board) {
         this.board = board;
+    }
+
+    public Board clone(){
+        Board board = new Board(this.size);
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                board.board.get(i).set(j, this.board.get(i).get(j).clone());
+            }
+        }
+        return board;
     }
 }

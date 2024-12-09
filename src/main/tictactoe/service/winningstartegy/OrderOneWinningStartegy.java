@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class OrderOneWinningStartegy implements WinningStartegy{
+public class OrderOneWinningStartegy implements WinningStrategy {
 
     private int dimension;
 

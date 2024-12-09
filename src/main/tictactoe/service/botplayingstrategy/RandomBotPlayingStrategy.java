@@ -14,7 +14,7 @@ public class RandomBotPlayingStrategy implements BotPlayingStrategy{
                 if(matrix.get(i).get(j).getCellState().equals(CellState.EMPTY)){
                     matrix.get(i).get(j).setPlayer(player);
                     matrix.get(i).get(j).setCellState(CellState.FILLED);
-                    return new Move(i,j);
+                    return new Move(i,j,player);
                 }
             }
         }
