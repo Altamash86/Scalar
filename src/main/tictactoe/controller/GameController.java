@@ -4,6 +4,7 @@ import main.tictactoe.models.*;
 import main.tictactoe.service.winningstartegy.WinningStrategies;
 import main.tictactoe.service.winningstartegy.WinningStrategyFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
@@ -25,8 +26,8 @@ public class GameController {
         game.getCurrentBoard().printBoard();
     }
 
-    public Move executeMove(Game game, Player player) {
-        Move move = player.makeMove(game.getCurrentBoard());
+    public Move executeMove(Game game, Player player, int dimension) {
+        Move move = player.makeMove(game.getCurrentBoard(),dimension);
         game.setNoOfSymbols(game.getNoOfSymbols() + 1);
         updateGameStatus(game);
         updateGameMoves(game,move);
@@ -65,5 +66,15 @@ public class GameController {
             System.out.println("--------------------");
             b.printBoard();
         }
+    }
+
+    public void undo(Game game, Move move){
+        game.setMoves((game.getMoves().subList(0,game.getMoves().size()-1)));
+        game.setBoardStates((game.getBoardStates().subList(0,game.getBoardStates().size()-1)));
+        List<List<Cell>> b = game.getCurrentBoard().getBoard();
+        int row = move.getCell().getRow();
+        int col = move.getCell().getCol();
+        b.get(row).get(col).setCellState(CellState.EMPTY);
+        b.get(row).get(col).setPlayer(null);
     }
 }

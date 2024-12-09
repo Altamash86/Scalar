@@ -53,6 +53,8 @@ public class TicTacToeMain {
         Game game = gameController.creatGame(dimension,players, WinningStrategies.ORDERONE_WINNINGSTRATEGY);
 
         int playerIndex = -1;
+        List<Move> moves = new ArrayList<>();
+        Map<String,Move> hs = new HashMap<>();
 
         while(game.getGameStatus().equals(GameStatus.IN_PROGRESS)){
             System.out.println("Current Board");
@@ -60,7 +62,21 @@ public class TicTacToeMain {
             playerIndex++;
             playerIndex = playerIndex % players.size();
             System.out.println(players.get(playerIndex).getName()+" turn");
-            Move move = gameController.executeMove(game,players.get(playerIndex));
+            Move move = gameController.executeMove(game,players.get(playerIndex),dimension);
+            moves.add(move);
+            if(players.get(playerIndex).getPlayerType().equals(PlayerType.HUMAN)){
+                System.out.println("Do you wants to undo last move? Y/N");
+                String undo = sc.next();
+                if(undo.equalsIgnoreCase("Y")){
+                    System.out.println("Board before undoing last move");
+                    gameController.displayBoard(game);
+                    gameController.undo(game,moves.getLast());
+                    System.out.println("Board after undoing last move");
+                    gameController.displayBoard(game);
+                    move = gameController.executeMove(game,players.get(playerIndex),dimension);
+                    moves.set(moves.size()-1, move);
+                }
+            }
             Player p = gameController.checkWinner(game,move);
             if(p!=null){
                 game.setWinner(p);

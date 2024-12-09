@@ -12,7 +12,7 @@ public class Bot extends Player{
     }
 
     @Override
-    public Move makeMove(Board currentBoard) {
+    public Move makeMove(Board currentBoard, int dimension) {
         BotPlayingStrategy strategy = BotPlayingStrategyFactory.getBotPlayingStrategy();
         return strategy.makeMove(currentBoard,this);
     }

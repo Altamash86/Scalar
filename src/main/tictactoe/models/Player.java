@@ -1,5 +1,8 @@
 package main.tictactoe.models;
 
+import main.tictactoe.exception.InvalidColumnException;
+import main.tictactoe.exception.InvalidRowException;
+
 import java.util.Scanner;
 
 public class Player {
@@ -47,16 +50,28 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove(Board currentBoard) {
+    public Move makeMove(Board currentBoard, int dimension) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter row: ");
         int row = sc.nextInt();
         System.out.println("Enter col: ");
         int col = sc.nextInt();
 
-        currentBoard.getBoard().get(row).get(col).setPlayer(this);
-        currentBoard.getBoard().get(row).get(col).setCellState(CellState.FILLED);
+        if(row>dimension-1){
+            throw new InvalidRowException("Invalid Row number selected: "+row);
+        }
+        if(col>dimension-1){
+            throw new InvalidColumnException("Invalid Column number selected: "+col);
+        }
 
+        if(currentBoard.getBoard().get(row).get(col).getCellState().equals(CellState.FILLED)){
+            System.out.println("Cell is already filled, pls use different cell");
+            this.makeMove(currentBoard,dimension);
+        }
+        else{
+            currentBoard.getBoard().get(row).get(col).setPlayer(this);
+            currentBoard.getBoard().get(row).get(col).setCellState(CellState.FILLED);
+        }
         return new Move(row,col,this);
     }
 }
