@@ -9,6 +9,10 @@ public abstract class BaseModels {
     private String updatedBy;
     private LocalDateTime updatedOn;
 
+    public BaseModels(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

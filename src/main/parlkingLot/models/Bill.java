@@ -8,6 +8,11 @@ public class Bill extends BaseModels{
     private int amount;
     private Gate gate;
 
+    public Bill() {
+        super(1);
+    }
+
+
     public LocalDateTime getExitTime() {
         return exitTime;
     }

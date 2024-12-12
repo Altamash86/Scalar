@@ -10,6 +10,10 @@ public class Payment extends BaseModels {
     private String transactionNumber;
     private PaymentStatus paymentStatus;
 
+    public Payment() {
+        super(1);
+    }
+
     public Bill getBill() {
         return bill;
     }

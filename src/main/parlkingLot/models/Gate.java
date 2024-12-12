@@ -11,6 +11,16 @@ public class Gate extends BaseModels{
     private GateType gateType;
     private GateStatus gateStatus;
 
+    public Gate(int id, String operator, int floorNumber, int gateNumber, int parkingLotId, GateType gateType, GateStatus gateStatus) {
+        super(id);
+        this.operator = operator;
+        this.floorNumber = floorNumber;
+        this.gateNumber = gateNumber;
+        this.parkingLotId = parkingLotId;
+        this.gateType = gateType;
+        this.gateStatus = gateStatus;
+    }
+
     public String getOperator() {
         return operator;
     }

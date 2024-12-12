@@ -16,6 +16,10 @@ public class ParkingLot extends BaseModels{
     private SlotAllocationStrategy slotAllocationStrategy;
     private BillCalculationStrategy billCalculationStrategy;
 
+    public ParkingLot(int id) {
+        super(id);
+    }
+
     public String getName() {
         return name;
     }
