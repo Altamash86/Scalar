@@ -4,7 +4,6 @@ import main.parlkingLot.controller.BillController;
 import main.parlkingLot.controller.TicketController;
 import main.parlkingLot.dto.TicketRequestDTO;
 import main.parlkingLot.dto.TicketResponseDTO;
-import main.parlkingLot.models.Gate;
 import main.parlkingLot.models.Vehicle;
 import main.parlkingLot.models.constant.VehicleType;
 import main.parlkingLot.repository.*;
